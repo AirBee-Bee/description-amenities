@@ -1,13 +1,12 @@
-# Project Name
+# AirBee&Bee Description + Amenities Module
 
-> Project description
+> Repo contains a full-stack module for displaying the description & amenities sections (plus additional amenities modal) for each AirBee&Bee listing.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/AirBee-Bee/photo-carousel
+  - https://github.com/AirBee-Bee/checkin-checkout
+  - https://github.com/AirBee-Bee/reviews
 
 ## Table of Contents
 
