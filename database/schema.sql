@@ -18,8 +18,8 @@ CREATE TABLE listings (
 
 CREATE TABLE amenities (
   ID INT AUTO_INCREMENT,
-  type VARCHAR(100),
-  icon VARCHAR(255),
+  type VARCHAR(100) NOT NULL,
+  icon VARCHAR(255) NOT NULL,
   PRIMARY KEY (ID)
 );
 
@@ -34,9 +34,9 @@ CREATE TABLE listings_amenities (
 
 CREATE TABLE highlights (
   ID INT AUTO_INCREMENT,
-  type VARCHAR(100),
-  description VARCHAR(255),
-  icon VARCHAR(255),
+  type VARCHAR(100) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  icon VARCHAR(255) NOT NULL,
   PRIMARY KEY (ID)
 );
 
