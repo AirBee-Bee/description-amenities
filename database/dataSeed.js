@@ -4,6 +4,9 @@
 // ----------------------- //
 // ----------------------- //
 
+var faker = require('faker');
+// console.log(faker.random.words());
+
 // Path to S3 Bucket w/ Icon Images
 const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
 
@@ -13,13 +16,21 @@ const titles = ["Brunz Beach Shack", "Sanctuary in the Pocket-Bunk House", "A Ch
 
 // 100 First Names (random names)
 const hosts = [];
-
-// TODO - use Faker to generate 100 first names, push them to hosts array
+for (let i = 0; i < 100; i++) {
+  let hostName = faker.name.firstName();
+  hosts.push(hostName);
+}
+console.log(hosts.length);
 
 // 100 Descriptions (random words)
 const descriptions = [];
-
-// TODO -- use Faker to generate descrptions of 500-3000 chars each
+for (let i = 0; i < 100; i++) {
+  let desc = faker.lorem.paragraphs();
+  desc += faker.lorem.paragraphs();
+  desc += faker.lorem.paragraphs();
+  descriptions.push(desc);
+}
+console.log(descriptions.length);
 
 // 28 Amenities (real from Airbnb)
 // w/ URLs to icon images
