@@ -11,14 +11,22 @@ const titles = ["Brunz Beach Shack", "Sanctuary in the Pocket-Bunk House", "A Ch
 // 100 First Names (random names)
 const hosts = [];
 
+// TODO - use Faker to generate 100 first names, push them to hosts array
+
 // 100 Descriptions (random words)
 const descriptions = [];
 
+// TODO -- use Faker to generate descrptions of 500-3000 chars each
+
 // 35 Amenities (real from Airbnb)
 // w/ URLs to icon images
-const amenities = {};
+const amenities = {
+  // TODO -- hard code this
+};
 
 // 7 Highlights (real from Airbnb)
 // w/ supporting phrases
 // w/ URLs to icon images
-const highlights = [];
+const highlights = {
+  // TODO -- hard code this
+};
