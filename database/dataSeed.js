@@ -136,6 +136,7 @@ const generateCount = function(num1, num2) {
   return Math.floor(Math.random() * num1) + num2;
 };
 
+// MAIN FUNCTION: Seed Listings Table
 const seedListings = function() {
   let amenityCount = generateCount(17, 10);
   let highlightCount = generateCount(3, 2);
@@ -145,6 +146,9 @@ const seedListings = function() {
   let bathCount = generateCount(15, 1);
   // TODO -- continue this function
 };
+
+// SEED LISTINGS TABLE
+// seedListings();
 
 // --- SEED AMENITIES TABLE --- //
 
@@ -182,7 +186,17 @@ const amenities = [
   { name: 'stereo', url: `${s3}stereo.JPG` }
 ];
 
-console.log(amenities.length);
+// SEED AMENITIES TABLE
+amenities.forEach(amenity => {
+  let queryStr = `INSERT INTO amenities (name, url) VALUES ('${amenity.name}', '${amenity.url}')`;
+  db.query(queryStr, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`Added ${amenity.name} Row to Amenities Table`);
+    }
+  });
+});
 
 // -- SEED HIGHLIGHTS TABLE --- //
 
