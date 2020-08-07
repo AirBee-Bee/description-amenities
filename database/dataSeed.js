@@ -235,7 +235,7 @@ const createAmenityRelationships = function() {
         if (err) {
           console.log(err);
         } else {
-          console.log(`Created Relationship Between Listing ${i} and Amenity ${amenityIndexes[j]}`);
+          console.log(`Created Relationship Between Listing ID ${i} and Amenity ID ${amenityIndexes[j] + 1}`);
         }
       })
     }
@@ -247,7 +247,31 @@ createAmenityRelationships();
 
 // -- SEED LISTINGS_HIGHLIGHTS -- //
 
-let highlightCount = generateCount(3, 2);
+const createHighlightRelationships = function() {
+  for (let i = 1; i <= 100; i++) {
+    let highlightCount = generateCount(3, 2);
+    let highlightIndexes = [];
+    while (highlightIndexes.length < highlightCount) {
+      let index = generateCount(7, 0);
+      if (!highlightIndexes.includes(index)) {
+        highlightIndexes.push(index);
+      }
+    }
+    for (let j = 0; j < highlightIndexes.length; j++) {
+      let queryStr = `INSERT INTO listings_highlights (listing_ID, highlight_ID) VALUES (${i}, ${highlightIndexes[j] + 1})`;
+      db.query(queryStr, (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`Created Relationship Between Listing ID ${i} and Highlight ID ${highlightIndexes[j] + 1}`);
+        }
+      })
+    }
+  }
+};
+
+// Invoke Listings_Amenities seed function
+createHighlightRelationships();
 
 // End the connection with Air Bee & Bee DB
 db.end((err) => {
