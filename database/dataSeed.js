@@ -7,7 +7,7 @@
 const db = require('./index.js'); // MySQL DB connection lives at this path
 const faker = require('faker'); // Faker module used to generate random host names & listing descriptions
 
-// --- SEED LISTINGS TABLE --- //
+// --- CREATE LISTINGS DATA --- //
 
 // 100 Real Airbnb Listing Titles
 // Filtered using JSON data from:
@@ -115,42 +115,35 @@ const titles = [
   "Historic South Park Private Room"
 ];
 
-// 100 First Names (random names)
-const hosts = [];
-for (let i = 0; i < 100; i++) {
-  let hostName = faker.name.firstName();
-  hosts.push(hostName);
-}
-
-// 100 Descriptions (random words)
-const descriptions = [];
-for (let i = 0; i < 100; i++) {
-  let desc = faker.lorem.paragraphs();
-  desc += faker.lorem.paragraphs();
-  desc += faker.lorem.paragraphs();
-  descriptions.push(desc);
-}
-
 // HELPER: Generate Random # Between num1 & num2
-const generateCount = function(num1, num2) {
+const generateCount = function (num1, num2) {
   return Math.floor(Math.random() * num1) + num2;
 };
 
 // MAIN FUNCTION: Seed Listings Table
-const seedListings = function() {
-  let amenityCount = generateCount(17, 10);
-  let highlightCount = generateCount(3, 2);
-  let guestCount = generateCount(24, 2);
-  let roomCount = generateCount(10, 1);
-  let bedCount = generateCount(10, 1);
-  let bathCount = generateCount(15, 1);
-  // TODO -- continue this function
+const seedListings = function () {
+  for (let i = 0; i < 100; i++) {
+    let title = titles[i];
+    let hostName = faker.name.firstName();
+    let description = faker.lorem.paragraphs() + faker.lorem.paragraphs();
+    let guestCount = generateCount(24, 2);
+    let roomCount = generateCount(10, 1);
+    let bedCount = generateCount(10, 1);
+    let bathCount = generateCount(15, 1);
+    let queryStr = `INSERT INTO listings (title, host, description, guests, rooms, beds, baths) VALUES ("${title}", '${hostName}', '${description}', ${guestCount}, ${roomCount}, ${bedCount}, ${bathCount})`;
+    db.query(queryStr, (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(`Added ${title} to Listings Table`);
+      }
+    })
+  }
 };
+// invoke seed function
+seedListings();
 
-// SEED LISTINGS TABLE
-// seedListings();
-
-// --- SEED AMENITIES TABLE --- //
+// --- CREATE AMENITIES DATA --- //
 
 // Path to S3 Bucket w/ Icon Images
 const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
@@ -186,7 +179,7 @@ const amenities = [
   { name: 'stereo', url: `${s3}stereo.JPG` }
 ];
 
-// SEED AMENITIES TABLE
+// Seed Amenities Table
 amenities.forEach(amenity => {
   let queryStr = `INSERT INTO amenities (name, url) VALUES ('${amenity.name}', '${amenity.url}')`;
   db.query(queryStr, (err, results) => {
@@ -198,7 +191,7 @@ amenities.forEach(amenity => {
   });
 });
 
-// -- SEED HIGHLIGHTS TABLE --- //
+// -- CREATE HIGHLIGHTS DATA --- //
 
 // 7 Highlighted Amenities (real from Airbnb)
 // w/ URLs to icon images
@@ -212,7 +205,27 @@ const highlights = [
   { name: 'Superhost', url: `${s3}star.JPG` }
 ];
 
+// Seed Highlights Table
+highlights.forEach(highlight => {
+  let queryStr = `INSERT INTO highlights (name, url) VALUES ('${highlight.name}', '${highlight.url}')`;
+  db.query(queryStr, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`Added ${highlight.name} Row to Highlights Table`);
+    }
+  })
+});
+
 console.log(highlights.length);
+
+// -- SEED LISTINGS_AMENITIES -- //
+
+let amenityCount = generateCount(17, 10);
+
+// -- SEED LISTINGS_HIGHLIGHTS -- //
+
+let highlightCount = generateCount(3, 2);
 
 // End the connection with Air Bee & Bee DB
 db.end((err) => {

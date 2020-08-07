@@ -34,9 +34,8 @@ CREATE TABLE listings_amenities (
 
 CREATE TABLE highlights (
   ID INT AUTO_INCREMENT,
-  type VARCHAR(100) NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  icon VARCHAR(255) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  url VARCHAR(255) NOT NULL,
   PRIMARY KEY (ID)
 );
 
