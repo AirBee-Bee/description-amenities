@@ -7,8 +7,7 @@
 const db = require('./index.js'); // MySQL DB connection lives at this path
 const faker = require('faker'); // Faker module used to generate random host names & listing descriptions
 
-// Path to S3 Bucket w/ Icon Images
-const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
+// --- SEED LISTINGS TABLE --- //
 
 // 100 Real Airbnb Listing Titles
 // Filtered using JSON data from:
@@ -116,16 +115,12 @@ const titles = [
   "Historic South Park Private Room"
 ];
 
-console.log(titles.length);
-
 // 100 First Names (random names)
 const hosts = [];
 for (let i = 0; i < 100; i++) {
   let hostName = faker.name.firstName();
   hosts.push(hostName);
 }
-
-console.log(hosts.length);
 
 // 100 Descriptions (random words)
 const descriptions = [];
@@ -136,7 +131,35 @@ for (let i = 0; i < 100; i++) {
   descriptions.push(desc);
 }
 
-console.log(descriptions.length);
+// HELPER: Generate Random # of Amenities btwn 10-26 for Listing
+const generateAmenities = function() {
+  return Math.floor(Math.random() * 17) + 10;
+};
+
+// HELPER: Generate Random # of Highlights btwn 2-4 for Listing
+const generateHighlights = function() {
+  return Math.floor(Math.random() * 3) + 2;
+};
+
+// HELPER: Generate Random # of Guests Allowed for Listing
+const generateGuestCount = function() {
+  return Math.floor(Math.random() * 24) + 2;
+};
+
+// HELPER: Generate Random # of Rooms and/or Beds in Listing
+const generateRoomOrBedCount = function() {
+  return Math.floor(Math.random() * 10) + 1;
+};
+
+// HELPER: Generate Random # of Rooms and/or Beds in Listing
+const generateBathCount = function() {
+  return Math.floor(Math.random() * 15) + 1;
+};
+
+// --- SEED AMENITIES TABLE --- //
+
+// Path to S3 Bucket w/ Icon Images
+const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
 
 // 26 Amenities (real from Airbnb)
 // w/ URLs to icon images
@@ -170,6 +193,8 @@ const amenities = [
 ];
 
 console.log(amenities.length);
+
+// -- SEED HIGHLIGHTS TABLE --- //
 
 // 7 Highlighted Amenities (real from Airbnb)
 // w/ URLs to icon images
