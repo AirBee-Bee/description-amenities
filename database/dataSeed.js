@@ -131,29 +131,19 @@ for (let i = 0; i < 100; i++) {
   descriptions.push(desc);
 }
 
-// HELPER: Generate Random # of Amenities btwn 10-26 for Listing
-const generateAmenities = function() {
-  return Math.floor(Math.random() * 17) + 10;
+// HELPER: Generate Random # Between num1 & num2
+const generateCount = function(num1, num2) {
+  return Math.floor(Math.random() * num1) + num2;
 };
 
-// HELPER: Generate Random # of Highlights btwn 2-4 for Listing
-const generateHighlights = function() {
-  return Math.floor(Math.random() * 3) + 2;
-};
-
-// HELPER: Generate Random # of Guests Allowed for Listing
-const generateGuestCount = function() {
-  return Math.floor(Math.random() * 24) + 2;
-};
-
-// HELPER: Generate Random # of Rooms and/or Beds in Listing
-const generateRoomOrBedCount = function() {
-  return Math.floor(Math.random() * 10) + 1;
-};
-
-// HELPER: Generate Random # of Rooms and/or Beds in Listing
-const generateBathCount = function() {
-  return Math.floor(Math.random() * 15) + 1;
+const seedListings = function() {
+  let amenityCount = generateCount(17, 10);
+  let highlightCount = generateCount(3, 2);
+  let guestCount = generateCount(24, 2);
+  let roomCount = generateCount(10, 1);
+  let bedCount = generateCount(10, 1);
+  let bathCount = generateCount(15, 1);
+  // TODO -- continue this function
 };
 
 // --- SEED AMENITIES TABLE --- //
