@@ -72,6 +72,14 @@ console.log(amenities.length);
 // 7 Highlights (real from Airbnb)
 // w/ supporting phrases
 // w/ URLs to icon images
-const highlights = {
-  // TODO -- hard code this
-};
+const highlights = [
+  {name: 'Outstanding Hospitality', url: `${s3}star.JPG`},
+  {name: 'Cancellation Policy', url: `${s3}calendar.JPG`},
+  {name: 'Entire Home', url: `${s3}home.JPG`},
+  {name: 'Self Check-In', url: `${s3}lock.JPG`},
+  {name: 'Enhanced Clean', url: `${s3}clean.JPG`},
+  {name: 'Clean & Tidy', url: `${s3}clean.JPG`},
+  {name: 'Superhost', url: `${s3}star.JPG`}
+];
+
+console.log(highlights.length);
