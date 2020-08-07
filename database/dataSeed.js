@@ -140,7 +140,7 @@ const seedListings = function () {
     })
   }
 };
-// invoke seed function
+// Invoke Listings seed function
 seedListings();
 
 // --- CREATE AMENITIES DATA --- //
@@ -217,11 +217,33 @@ highlights.forEach(highlight => {
   })
 });
 
-console.log(highlights.length);
-
 // -- SEED LISTINGS_AMENITIES -- //
 
-let amenityCount = generateCount(17, 10);
+const createAmenityRelationships = function() {
+  for (let i = 1; i <= 100; i++) {
+    let amenityCount = generateCount(17, 10);
+    let amenityIndexes = [];
+    while (amenityIndexes.length < amenityCount) {
+      let index = generateCount(26, 0);
+      if (!amenityIndexes.includes(index)) {
+        amenityIndexes.push(index);
+      }
+    }
+    for (let j = 0; j < amenityIndexes.length; j++) {
+      let queryStr = `INSERT INTO listings_amenities (listing_ID, amenity_ID) VALUES (${i}, ${amenityIndexes[j] + 1})`;
+      db.query(queryStr, (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`Created Relationship Between Listing ${i} and Amenity ${amenityIndexes[j]}`);
+        }
+      })
+    }
+  }
+};
+
+// Invoke Listings_Amenities seed function
+createAmenityRelationships();
 
 // -- SEED LISTINGS_HIGHLIGHTS -- //
 
