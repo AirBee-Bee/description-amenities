@@ -32,7 +32,14 @@ app.get('/listings/:id/amenities', (req, res) => {
 });
 
 app.get('/listings/:id/highlights', (req, res) => {
-  query.getHighlightsByListingID();
+  query.getHighlightsByListingID(req.params.id, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 app.listen(port, () => {
