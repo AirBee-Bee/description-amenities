@@ -32,7 +32,7 @@ module.exports = {
     });
   },
 
-  // Fetch Featured Amenities associated with listing ID
+  // Fetch Featured Amenities (Highlights) associated with listing ID
   getHighlightsByListingID: function (id, callback) {
     let queryStr = `SELECT * FROM highlights h INNER JOIN listings_highlights lh ON lh.listing_ID = ${id} AND h.ID = lh.highlight_ID`;
     db.query(queryStr, (err, data) => {
