@@ -219,7 +219,7 @@ highlights.forEach(highlight => {
 
 // -- SEED LISTINGS_AMENITIES -- //
 
-const createAmenityRelationships = function() {
+const createAmenityRelationships = function () {
   for (let i = 1; i <= 100; i++) {
     let amenityCount = generateCount(17, 10);
     let amenityIndexes = [];
@@ -247,7 +247,7 @@ createAmenityRelationships();
 
 // -- SEED LISTINGS_HIGHLIGHTS -- //
 
-const createHighlightRelationships = function() {
+const createHighlightRelationships = function () {
   for (let i = 1; i <= 100; i++) {
     let highlightCount = generateCount(3, 2);
     let highlightIndexes = [];

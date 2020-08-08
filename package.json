@@ -8,19 +8,21 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node database/dataSeed.js"
+    "seed": "node database/dataSeed.js",
+    "server-start": "nodemon server/index.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "faker": "^4.1.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^4.0.0"
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "nodemon": "^2.0.4"
   }
 }
