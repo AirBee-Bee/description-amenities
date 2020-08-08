@@ -22,7 +22,14 @@ module.exports = {
 
   // Fetch Amenities associated with listing ID
   getAmenitiesByListingID: function(id, callback) {
-
+    let queryStr = `SELECT * FROM amenities a INNER JOIN listings_amenities la ON la.listing_ID = ${id} AND a.ID = la.amenity_ID`;
+    db.query(queryStr, (err, data) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, data);
+      }
+    });
   },
 
   // Fetch Featured Amenities associated with listing ID

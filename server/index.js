@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 app.get('/listings/:id/', (req, res) => {
   query.getListingByID(req.params.id, (err, data) => {
     if (err) {
-      console.log(err);
+      res.sendStatus(500);
     } else {
       res.send(data);
     }
@@ -21,11 +21,18 @@ app.get('/listings/:id/', (req, res) => {
 });
 
 app.get('/listings/:id/amenities', (req, res) => {
-  // look up amenities by listing ID
+  query.getAmenitiesByListingID(req.params.id, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 app.get('/listings/:id/highlights', (req, res) => {
-  // look up featured amenities (highlights) by listing ID
+  query.getHighlightsByListingID();
 });
 
 app.listen(port, () => {
