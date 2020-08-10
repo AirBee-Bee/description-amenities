@@ -9,20 +9,29 @@
   },
   "scripts": {
     "seed": "node database/dataSeed.js",
-    "server-start": "nodemon server/index.js"
+    "server-start": "nodemon server/index.js",
+    "build": "webpack --config webpack.config.js --watch"
   },
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^4.1.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "cli": "^1.0.1",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
