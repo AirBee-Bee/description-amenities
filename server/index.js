@@ -5,17 +5,27 @@
 // ----------------------- //
 
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 3333;
 
 // DB query handler functions
 const query = require('../database/queryHandlers.js');
 
-app.use('/listing', express.static('public'));
 app.use(express.json());
 
+// serve index.html regardless of which listing ID is used in URL
+app.get('/listing/:id', (req, res) => {
+  res.sendFile('index.html', {root: path.join(__dirname, '../public')});
+});
+
+// serve bundle file when index.html requests it
+app.get('/public/bundle.js', (req, res) => {
+  res.sendFile('bundle.js', {root: path.join(__dirname, '../public')});
+});
+
 // FETCH LISTING INFO BASED ON ID IN URL
-app.get('/listings/:id/', (req, res) => {
+app.get('/listing/:id/info', (req, res) => {
   query.getListingByID(req.params.id, (err, data) => {
     if (err) {
       res.sendStatus(500);
@@ -26,7 +36,7 @@ app.get('/listings/:id/', (req, res) => {
 });
 
 // FETCH AMENITY INFO FOR LISTING BASED ON ID
-app.get('/listings/:id/amenities', (req, res) => {
+app.get('/listing/:id/amenities', (req, res) => {
   query.getAmenitiesByListingID(req.params.id, (err, data) => {
     if (err) {
       console.log(err);
@@ -38,7 +48,7 @@ app.get('/listings/:id/amenities', (req, res) => {
 });
 
 // FETCH FEATURED AMENITY INFO FOR LISTING BASED ON ID
-app.get('/listings/:id/highlights', (req, res) => {
+app.get('/listing/:id/highlights', (req, res) => {
   query.getHighlightsByListingID(req.params.id, (err, data) => {
     if (err) {
       console.log(err);
