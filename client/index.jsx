@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Title from './components/Title.jsx';
+import Description from './components/Description.jsx';
+import Amenities from './components/Amenities.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,6 +30,10 @@ class App extends React.Component {
         <span>I am the App</span>
         <br/>
         <Title />
+        <br/>
+        <Description />
+        <br/>
+        <Amenities />
       </div>
     );
   }
