@@ -11,6 +11,7 @@ const port = 3333;
 // DB query handler functions
 const query = require('../database/queryHandlers.js');
 
+app.use('/listing', express.static('public'));
 app.use(express.json());
 
 // FETCH LISTING INFO BASED ON ID IN URL
