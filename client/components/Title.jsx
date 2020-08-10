@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Title() {
+function Title( {info} ) {
   return (
-    <span>I am the Title</span>
+  <span>{info.title} hosted by {info.host}</span>
   );
 }
 
