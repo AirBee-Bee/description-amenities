@@ -12,7 +12,6 @@ const port = 3333;
 // DB query handler functions
 const query = require('../database/queryHandlers.js');
 
-// app.use('/listing', express.static('public'));
 app.use(express.json());
 
 // serve index.html regardless of which listing ID is used in URL

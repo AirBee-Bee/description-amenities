@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Title from './components/Title.jsx';
+import Highlights from './components/Highlights.jsx';
 import Description from './components/Description.jsx';
 import Amenities from './components/Amenities.jsx';
 
@@ -86,6 +87,8 @@ class App extends React.Component {
     return (
       <div>
         <Title info={this.state} />
+        <br />
+        <Highlights highlights={this.state.highlights} />
         <br />
         <Description desc={this.state.description} />
         <br />
