@@ -221,7 +221,7 @@ highlights.forEach(highlight => {
 
 const createAmenityRelationships = function () {
   for (let i = 1; i <= 100; i++) {
-    let amenityCount = generateCount(17, 10);
+    let amenityCount = generateCount(7, 20);
     let amenityIndexes = [];
     while (amenityIndexes.length < amenityCount) {
       let index = generateCount(26, 0);

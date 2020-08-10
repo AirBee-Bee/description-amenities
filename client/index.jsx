@@ -24,19 +24,22 @@ class App extends React.Component {
 
     // Bind methods to correct context
     this.fetchListingInfo = this.fetchListingInfo.bind(this);
+    this.fetchAmenities = this.fetchAmenities.bind(this);
+    this.fetchHighlights = this.fetchHighlights.bind(this);
 
   }
 
   // Invoke these functions when App mounts
   componentDidMount() {
     this.fetchListingInfo();
+    this.fetchAmenities();
+    this.fetchHighlights();
   }
 
   // GET Listing Info
   fetchListingInfo() {
     axios.get(`${window.location.href}/info`)
       .then((res) => {
-        console.log(res.data);
         let data = res.data[0];
         this.setState({
           title: data.title,
@@ -54,21 +57,39 @@ class App extends React.Component {
   }
 
   // GET Listing Amenities
-  fetchAmenities() {}
+  fetchAmenities() {
+    axios.get(`${window.location.href}/amenities`)
+      .then((res) => {
+        this.setState({
+          amenities: res.data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   // GET Featured Amenities
-  fetchHighlights() {}
+  fetchHighlights() {
+    axios.get(`${window.location.href}/highlights`)
+      .then((res) => {
+        this.setState({
+          highlights: res.data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (
       <div>
-        <span>I am the App</span>
-        <br/>
-        <Title info={this.state}/>
-        <br/>
-        <Description />
-        <br/>
-        <Amenities />
+        <Title info={this.state} />
+        <br />
+        <Description desc={this.state.description} />
+        <br />
+        <Amenities amenities={this.state.amenities} />
       </div>
     );
   }

@@ -1,8 +1,12 @@
 import React from 'react';
 
-function Amenities() {
+function Amenities( {amenities} ) {
   return (
-    <span>I am the Amenities</span>
+    <div>
+      {amenities.map(amn => {
+        return (<div key={amn.ID}>{amn.name}&nbsp;</div>)
+      })}
+    </div>
   );
 }
 

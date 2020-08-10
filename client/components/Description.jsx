@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Description() {
+function Description( {desc} ) {
   return (
-    <span>I am the Description</span>
+    <div>{desc}</div>
   );
 }
 
