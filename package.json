@@ -7,6 +7,9 @@
   "engines": {
     "node": ">=6.13.0"
   },
+  "jest": {
+    "collectCoverage": false
+  },
   "scripts": {
     "seed": "node database/dataSeed.js",
     "server-start": "nodemon server/index.js",
