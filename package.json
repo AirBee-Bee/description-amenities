@@ -7,22 +7,32 @@
   "engines": {
     "node": ">=6.13.0"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "scripts": {
     "seed": "node database/dataSeed.js",
     "server-start": "nodemon server/index.js",
-    "build": "webpack --config webpack.config.js --watch"
+    "build": "webpack --config webpack.config.js --watch",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "jest-cli": "^26.3.0",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "cli": "^1.0.1",
     "eslint": "^7.2.0",
@@ -31,7 +41,10 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.0",
+    "jest": "^26.3.0",
     "nodemon": "^2.0.4",
+    "react-test-renderer": "^16.13.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
