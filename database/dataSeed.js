@@ -126,10 +126,10 @@ const seedListings = function () {
     let title = titles[i];
     let hostName = faker.name.firstName();
     let description = faker.lorem.paragraphs() + faker.lorem.paragraphs();
-    let guestCount = generateCount(24, 2);
     let roomCount = generateCount(10, 1);
-    let bedCount = generateCount(10, 1);
-    let bathCount = generateCount(15, 1);
+    let bedCount = Math.ceil(roomCount * 1.25);
+    let guestCount = bedCount * 2;
+    let bathCount = Math.ceil(roomCount * 1.25);
     let queryStr = `INSERT INTO listings (title, host, description, guests, rooms, beds, baths) VALUES ("${title}", '${hostName}', '${description}', ${guestCount}, ${roomCount}, ${bedCount}, ${bathCount})`;
     db.query(queryStr, (err, results) => {
       if (err) {
