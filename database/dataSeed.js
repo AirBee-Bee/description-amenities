@@ -126,10 +126,10 @@ const seedListings = function () {
     let title = titles[i];
     let hostName = faker.name.firstName();
     let description = faker.lorem.paragraphs() + faker.lorem.paragraphs();
-    let guestCount = generateCount(24, 2);
     let roomCount = generateCount(10, 1);
-    let bedCount = generateCount(10, 1);
-    let bathCount = generateCount(15, 1);
+    let bedCount = Math.ceil(roomCount * 1.25);
+    let guestCount = bedCount * 2;
+    let bathCount = Math.ceil(roomCount * 1.25);
     let queryStr = `INSERT INTO listings (title, host, description, guests, rooms, beds, baths) VALUES ("${title}", '${hostName}', '${description}', ${guestCount}, ${roomCount}, ${bedCount}, ${bathCount})`;
     db.query(queryStr, (err, results) => {
       if (err) {
@@ -151,32 +151,32 @@ const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
 // 26 Amenities (real from Airbnb)
 // w/ URLs to icon images
 const amenities = [
-  { name: 'checkIn24Hrs', url: `${s3}24hrcheckin.JPG` },
-  { name: 'airConditioning', url: `${s3}ac.JPG` },
-  { name: 'alarmClock', url: `${s3}24hrcheckin.JPG` },
-  { name: 'balcony', url: `${s3}balcony.JPG` },
-  { name: 'bathtub', url: `${s3}bathtub.JPG` },
-  { name: 'bbq', url: `${s3}kitchen.JPG` },
-  { name: 'cableTV', url: `${s3}cabletv.JPG` },
-  { name: 'catsAllowed', url: `${s3}cats.JPG` },
-  { name: 'kitchenUtensils', url: `${s3}kitchen.JPG` },
-  { name: 'dogsAllowed', url: `${s3}dogs.JPG` },
-  { name: 'freeParking', url: `${s3}parking.JPG` },
-  { name: 'freeWifi', url: `${s3}wifi.JPG` },
-  { name: 'hairDryer', url: `${s3}hairdryer.JPG` },
-  { name: 'heating', url: `${s3}heatfire.JPG` },
-  { name: 'hotTub', url: `${s3}hottub.JPG` },
-  { name: 'fireplace', url: `${s3}heatfire.JPG` },
-  { name: 'kingSizeBed', url: `${s3}bed.JPG` },
-  { name: 'microwave', url: `${s3}kitchen.JPG` },
-  { name: 'pool', url: `${s3}hottub.JPG` },
-  { name: 'oven', url: `${s3}kitchen.JPG` },
-  { name: 'restaurant', url: `${s3}kitchen.JPG` },
-  { name: 'shopping', url: `${s3}shopping.JPG` },
-  { name: 'shower', url: `${s3}bathtub.JPG` },
-  { name: 'smokeDetector', url: `${s3}heatfire.JPG` },
-  { name: 'sofa', url: `${s3}sofa.JPG` },
-  { name: 'stereo', url: `${s3}stereo.JPG` }
+  { name: '24 Hour Check-In', url: `${s3}24hrcheckin.JPG` },
+  { name: 'Air Conditioning', url: `${s3}ac.JPG` },
+  { name: 'Alarm Clock', url: `${s3}24hrcheckin.JPG` },
+  { name: 'Balcony', url: `${s3}balcony.JPG` },
+  { name: 'Bathtub', url: `${s3}bathtub.JPG` },
+  { name: 'Barbecue', url: `${s3}kitchen.JPG` },
+  { name: 'Cable TV', url: `${s3}cabletv.JPG` },
+  { name: 'Cats Allowed', url: `${s3}cats.JPG` },
+  { name: 'Kitchen Utensils', url: `${s3}kitchen.JPG` },
+  { name: 'Dogs Allowed', url: `${s3}dogs.JPG` },
+  { name: 'Free Parking', url: `${s3}parking.JPG` },
+  { name: 'Free WiFi', url: `${s3}wifi.JPG` },
+  { name: 'Hair Dryer', url: `${s3}hairdryer.JPG` },
+  { name: 'Heating', url: `${s3}heatfire.JPG` },
+  { name: 'Hot Tub', url: `${s3}hottub.JPG` },
+  { name: 'Fireplace', url: `${s3}heatfire.JPG` },
+  { name: 'King Size Bed', url: `${s3}bed.JPG` },
+  { name: 'Microwave', url: `${s3}kitchen.JPG` },
+  { name: 'Pool', url: `${s3}hottub.JPG` },
+  { name: 'Oven', url: `${s3}kitchen.JPG` },
+  { name: 'Restaurant Nearby', url: `${s3}kitchen.JPG` },
+  { name: 'Shopping Nearby', url: `${s3}shopping.JPG` },
+  { name: 'Shower', url: `${s3}bathtub.JPG` },
+  { name: 'Smoke Detector', url: `${s3}heatfire.JPG` },
+  { name: 'Sofa', url: `${s3}sofa.JPG` },
+  { name: 'Stereo', url: `${s3}stereo.JPG` }
 ];
 
 // Seed Amenities Table
