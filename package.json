@@ -8,18 +8,9 @@
     "node": ">=6.13.0"
   },
   "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**",
-      "!**/webpack.config.js/**",
-      "!**/.eslintrc.js/**",
-      "!**/public/**"
-    ],
-    "coverageReporters": [
-      "text",
-      "text-summary"
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
     ]
   },
   "scripts": {
@@ -53,6 +44,7 @@
     "jest": "^26.3.0",
     "nodemon": "^2.0.4",
     "react-test-renderer": "^16.13.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }

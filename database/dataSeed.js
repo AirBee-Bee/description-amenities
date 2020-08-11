@@ -281,5 +281,3 @@ db.end((err) => {
     console.log('Database Connection Terminated');
   }
 });
-
-module.exports = generateCount;
