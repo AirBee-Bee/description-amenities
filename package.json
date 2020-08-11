@@ -8,7 +8,19 @@
     "node": ">=6.13.0"
   },
   "jest": {
-    "collectCoverage": false
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/webpack.config.js/**",
+      "!**/.eslintrc.js/**",
+      "!**/public/**"
+    ],
+    "coverageReporters": [
+      "text",
+      "text-summary"
+    ]
   },
   "scripts": {
     "seed": "node database/dataSeed.js",
@@ -20,13 +32,16 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "jest-cli": "^26.3.0",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "cli": "^1.0.1",
     "eslint": "^7.2.0",
@@ -37,6 +52,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "jest": "^26.3.0",
     "nodemon": "^2.0.4",
+    "react-test-renderer": "^16.13.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
