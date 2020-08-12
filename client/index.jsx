@@ -15,6 +15,7 @@ class App extends React.Component {
     this.state = {
       title: '',
       host: '',
+      hostPhoto: '',
       description: '',
       guests: 0,
       rooms: 0,
@@ -46,6 +47,7 @@ class App extends React.Component {
         this.setState({
           title: data.title,
           host: data.host,
+          hostPhoto: data.photo,
           description: data.description,
           guests: data.guests,
           rooms: data.rooms,

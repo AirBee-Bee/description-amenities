@@ -7,6 +7,9 @@
 const db = require('./index.js'); // MySQL DB connection lives at this path
 const faker = require('faker'); // Faker module used to generate random host names & listing descriptions
 
+// Path to S3 Bucket w/ Icon Images
+const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
+
 // --- CREATE LISTINGS DATA --- //
 
 // 100 Real Airbnb Listing Titles
@@ -115,6 +118,13 @@ const titles = [
   "Historic South Park Private Room"
 ];
 
+// 50 Random user profile photos from randomuser.me
+let hostPhotos = [];
+// Seed hostPhotos array with S3 image links
+for (let i = 1; i <= 50; i++) {
+  hostPhotos.push(`${s3}photo${i}.jpg`)
+}
+
 // HELPER: Generate Random # Between num1 & num2
 const generateCount = function (num1, num2) {
   return Math.floor(Math.random() * num1) + num2;
@@ -124,13 +134,14 @@ const generateCount = function (num1, num2) {
 const seedListings = function () {
   for (let i = 0; i < 100; i++) {
     let title = titles[i];
+    let photo = hostPhotos[generateCount(50, 0)];
     let hostName = faker.name.firstName();
     let description = `${faker.lorem.paragraphs()} ${faker.lorem.paragraphs()} ${faker.lorem.paragraphs()}`;
     let roomCount = generateCount(10, 1);
     let bedCount = Math.ceil(roomCount * 1.25);
     let guestCount = bedCount * 2;
     let bathCount = Math.ceil(roomCount * 1.25);
-    let queryStr = `INSERT INTO listings (title, host, description, guests, rooms, beds, baths) VALUES ("${title}", '${hostName}', '${description}', ${guestCount}, ${roomCount}, ${bedCount}, ${bathCount})`;
+    let queryStr = `INSERT INTO listings (title, host, photo, description, guests, rooms, beds, baths) VALUES ("${title}", '${hostName}', '${photo}', '${description}', ${guestCount}, ${roomCount}, ${bedCount}, ${bathCount})`;
     db.query(queryStr, (err, results) => {
       if (err) {
         console.log(err);
@@ -144,9 +155,6 @@ const seedListings = function () {
 seedListings();
 
 // --- CREATE AMENITIES DATA --- //
-
-// Path to S3 Bucket w/ Icon Images
-const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
 
 // 26 Amenities (real from Airbnb)
 // w/ URLs to icon images

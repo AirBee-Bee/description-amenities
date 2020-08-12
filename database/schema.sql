@@ -8,6 +8,7 @@ CREATE TABLE listings (
   ID INT AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
   host VARCHAR(50) NOT NULL,
+  photo VARCHAR(100) NOT NULL,
   description TEXT NOT NULL,
   guests INT NOT NULL,
   rooms INT NOT NULL,

@@ -13,10 +13,14 @@ const StyledTitle = styled.div`
   padding: 0px 0px 8px 0px;
 `
 
+const StyledPhoto = styled.img`
+  border-radius: 50%;
+`
+
 function Title( {info} ) {
   return (
     <StyledDiv>
-      <StyledTitle>{info.title} hosted by {info.host}</StyledTitle>
+      <StyledTitle>{info.title} hosted by {info.host}<StyledPhoto src={info.hostPhoto} /></StyledTitle>
       <div>
         {info.guests} guests&nbsp;·&nbsp;
         {info.rooms} rooms&nbsp;·&nbsp;
