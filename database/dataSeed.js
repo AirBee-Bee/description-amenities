@@ -202,7 +202,8 @@ const highlights = [
   { name: 'Self Check-In', url: `${s3}lock.JPG` },
   { name: 'Enhanced clean', url: `${s3}clean.JPG` },
   { name: 'Clean & Tidy', url: `${s3}clean.JPG` },
-  { name: 'Superhost', url: `${s3}star.JPG` }
+  { name: 'Superhost', url: `${s3}star.JPG` },
+  { name: 'Amenities for everyday living', url: `${s3}wifi.JPG` }
 ];
 
 // Seed Highlights Table
