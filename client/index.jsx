@@ -100,7 +100,10 @@ class App extends React.Component {
 }
 
 const StyledMainDiv = styled.div`
-  width: 500px;
+  width: 655px;
+  font-size: 16px;
+  font-weight: 250;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
 `
 
 ReactDOM.render(<App />, document.getElementById('app'));

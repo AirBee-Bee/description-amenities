@@ -125,7 +125,7 @@ const seedListings = function () {
   for (let i = 0; i < 100; i++) {
     let title = titles[i];
     let hostName = faker.name.firstName();
-    let description = faker.lorem.paragraphs() + faker.lorem.paragraphs();
+    let description = `${faker.lorem.paragraphs()} ${faker.lorem.paragraphs()} ${faker.lorem.paragraphs()}`;
     let roomCount = generateCount(10, 1);
     let bedCount = Math.ceil(roomCount * 1.25);
     let guestCount = bedCount * 2;
@@ -196,11 +196,11 @@ amenities.forEach(amenity => {
 // 7 Highlighted Amenities (real from Airbnb)
 // w/ URLs to icon images
 const highlights = [
-  { name: 'Outstanding Hospitality', url: `${s3}star.JPG` },
-  { name: 'Cancellation Policy', url: `${s3}calendar.JPG` },
-  { name: 'Entire Home', url: `${s3}home.JPG` },
+  { name: 'Outstanding hospitality', url: `${s3}star.JPG` },
+  { name: 'Cancellation policy', url: `${s3}calendar.JPG` },
+  { name: 'Entire home', url: `${s3}home.JPG` },
   { name: 'Self Check-In', url: `${s3}lock.JPG` },
-  { name: 'Enhanced Clean', url: `${s3}clean.JPG` },
+  { name: 'Enhanced clean', url: `${s3}clean.JPG` },
   { name: 'Clean & Tidy', url: `${s3}clean.JPG` },
   { name: 'Superhost', url: `${s3}star.JPG` }
 ];
