@@ -7,6 +7,9 @@
 const db = require('./index.js'); // MySQL DB connection lives at this path
 const faker = require('faker'); // Faker module used to generate random host names & listing descriptions
 
+// Path to S3 Bucket w/ Icon Images
+const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
+
 // --- CREATE LISTINGS DATA --- //
 
 // 100 Real Airbnb Listing Titles
@@ -116,108 +119,11 @@ const titles = [
 ];
 
 // 100 Random user profile photos from randomuser.me
-let hostPhotos = [
-  "https://randomuser.me/api/portraits/med/men/95.jpg",
-  "https://randomuser.me/api/portraits/med/women/0.jpg",
-  "https://randomuser.me/api/portraits/med/women/8.jpg",
-  "https://randomuser.me/api/portraits/med/women/10.jpg",
-  "https://randomuser.me/api/portraits/med/women/80.jpg",
-  "https://randomuser.me/api/portraits/med/men/69.jpg",
-  "https://randomuser.me/api/portraits/med/women/58.jpg",
-  "https://randomuser.me/api/portraits/med/women/24.jpg",
-  "https://randomuser.me/api/portraits/med/women/89.jpg",
-  "https://randomuser.me/api/portraits/med/men/4.jpg",
-  "https://randomuser.me/api/portraits/med/women/57.jpg",
-  "https://randomuser.me/api/portraits/med/women/51.jpg",
-  "https://randomuser.me/api/portraits/med/women/89.jpg",
-  "https://randomuser.me/api/portraits/med/women/24.jpg",
-  "https://randomuser.me/api/portraits/med/women/43.jpg",
-  "https://randomuser.me/api/portraits/med/men/30.jpg",
-  "https://randomuser.me/api/portraits/med/men/85.jpg",
-  "https://randomuser.me/api/portraits/med/men/43.jpg",
-  "https://randomuser.me/api/portraits/med/men/93.jpg",
-  "https://randomuser.me/api/portraits/med/women/11.jpg",
-  "https://randomuser.me/api/portraits/med/women/68.jpg",
-  "https://randomuser.me/api/portraits/med/women/18.jpg",
-  "https://randomuser.me/api/portraits/med/women/87.jpg",
-  "https://randomuser.me/api/portraits/med/men/31.jpg",
-  "https://randomuser.me/api/portraits/med/men/3.jpg",
-  "https://randomuser.me/api/portraits/med/men/77.jpg",
-  "https://randomuser.me/api/portraits/med/women/2.jpg",
-  "https://randomuser.me/api/portraits/med/women/79.jpg",
-  "https://randomuser.me/api/portraits/med/women/11.jpg",
-  "https://randomuser.me/api/portraits/med/women/63.jpg",
-  "https://randomuser.me/api/portraits/med/women/41.jpg",
-  "https://randomuser.me/api/portraits/med/women/13.jpg",
-  "https://randomuser.me/api/portraits/med/women/47.jpg",
-  "https://randomuser.me/api/portraits/med/men/78.jpg",
-  "https://randomuser.me/api/portraits/med/men/8.jpg",
-  "https://randomuser.me/api/portraits/med/women/6.jpg",
-  "https://randomuser.me/api/portraits/med/men/88.jpg",
-  "https://randomuser.me/api/portraits/med/men/53.jpg",
-  "https://randomuser.me/api/portraits/med/women/25.jpg",
-  "https://randomuser.me/api/portraits/med/men/21.jpg",
-  "https://randomuser.me/api/portraits/med/women/50.jpg",
-  "https://randomuser.me/api/portraits/med/women/23.jpg",
-  "https://randomuser.me/api/portraits/med/women/28.jpg",
-  "https://randomuser.me/api/portraits/med/men/39.jpg",
-  "https://randomuser.me/api/portraits/med/women/8.jpg",
-  "https://randomuser.me/api/portraits/med/women/55.jpg",
-  "https://randomuser.me/api/portraits/med/men/3.jpg",
-  "https://randomuser.me/api/portraits/med/women/56.jpg",
-  "https://randomuser.me/api/portraits/med/women/74.jpg",
-  "https://randomuser.me/api/portraits/med/women/43.jpg",
-  "https://randomuser.me/api/portraits/med/women/65.jpg",
-  "https://randomuser.me/api/portraits/med/men/97.jpg",
-  "https://randomuser.me/api/portraits/med/men/86.jpg",
-  "https://randomuser.me/api/portraits/med/women/7.jpg",
-  "https://randomuser.me/api/portraits/med/women/36.jpg",
-  "https://randomuser.me/api/portraits/med/women/20.jpg",
-  "https://randomuser.me/api/portraits/med/women/21.jpg",
-  "https://randomuser.me/api/portraits/med/men/80.jpg",
-  "https://randomuser.me/api/portraits/med/women/85.jpg",
-  "https://randomuser.me/api/portraits/med/women/57.jpg",
-  "https://randomuser.me/api/portraits/med/women/48.jpg",
-  "https://randomuser.me/api/portraits/med/men/22.jpg",
-  "https://randomuser.me/api/portraits/med/women/21.jpg",
-  "https://randomuser.me/api/portraits/med/women/15.jpg",
-  "https://randomuser.me/api/portraits/med/men/40.jpg",
-  "https://randomuser.me/api/portraits/med/women/14.jpg",
-  "https://randomuser.me/api/portraits/med/men/42.jpg",
-  "https://randomuser.me/api/portraits/med/men/53.jpg",
-  "https://randomuser.me/api/portraits/med/men/7.jpg",
-  "https://randomuser.me/api/portraits/med/men/93.jpg",
-  "https://randomuser.me/api/portraits/med/men/62.jpg",
-  "https://randomuser.me/api/portraits/med/women/93.jpg",
-  "https://randomuser.me/api/portraits/med/men/11.jpg",
-  "https://randomuser.me/api/portraits/med/men/42.jpg",
-  "https://randomuser.me/api/portraits/med/women/22.jpg",
-  "https://randomuser.me/api/portraits/med/women/17.jpg",
-  "https://randomuser.me/api/portraits/med/men/95.jpg",
-  "https://randomuser.me/api/portraits/med/women/20.jpg",
-  "https://randomuser.me/api/portraits/med/women/62.jpg",
-  "https://randomuser.me/api/portraits/med/women/59.jpg",
-  "https://randomuser.me/api/portraits/med/women/72.jpg",
-  "https://randomuser.me/api/portraits/med/women/20.jpg",
-  "https://randomuser.me/api/portraits/med/men/24.jpg",
-  "https://randomuser.me/api/portraits/med/men/11.jpg",
-  "https://randomuser.me/api/portraits/med/men/88.jpg",
-  "https://randomuser.me/api/portraits/med/men/66.jpg",
-  "https://randomuser.me/api/portraits/med/men/21.jpg",
-  "https://randomuser.me/api/portraits/med/men/70.jpg",
-  "https://randomuser.me/api/portraits/med/women/69.jpg",
-  "https://randomuser.me/api/portraits/med/men/33.jpg",
-  "https://randomuser.me/api/portraits/med/women/53.jpg",
-  "https://randomuser.me/api/portraits/med/women/12.jpg",
-  "https://randomuser.me/api/portraits/med/women/37.jpg",
-  "https://randomuser.me/api/portraits/med/men/37.jpg",
-  "https://randomuser.me/api/portraits/med/women/63.jpg",
-  "https://randomuser.me/api/portraits/med/men/82.jpg",
-  "https://randomuser.me/api/portraits/med/women/88.jpg",
-  "https://randomuser.me/api/portraits/med/women/65.jpg",
-  "https://randomuser.me/api/portraits/med/women/36.jpg",
-  "https://randomuser.me/api/portraits/med/men/29.jpg"
-];
+let hostPhotos = [];
+
+for (let i = 1; i <= 50; i++) {
+  hostPhotos.push(`${s3}photo${i}.jpg`)
+}
 
 // HELPER: Generate Random # Between num1 & num2
 const generateCount = function (num1, num2) {
@@ -228,7 +134,7 @@ const generateCount = function (num1, num2) {
 const seedListings = function () {
   for (let i = 0; i < 100; i++) {
     let title = titles[i];
-    let photo = hostPhotos[i];
+    let photo = hostPhotos[generateCount(50, 0)];
     let hostName = faker.name.firstName();
     let description = `${faker.lorem.paragraphs()} ${faker.lorem.paragraphs()} ${faker.lorem.paragraphs()}`;
     let roomCount = generateCount(10, 1);
@@ -249,9 +155,6 @@ const seedListings = function () {
 seedListings();
 
 // --- CREATE AMENITIES DATA --- //
-
-// Path to S3 Bucket w/ Icon Images
-const s3 = 'https://airbeebee.s3-us-west-1.amazonaws.com/';
 
 // 26 Amenities (real from Airbnb)
 // w/ URLs to icon images
