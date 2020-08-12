@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components';
 import Title from './components/Title.jsx';
 import Highlights from './components/Highlights.jsx';
 import Description from './components/Description.jsx';
@@ -85,7 +86,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <StyledMainDiv>
         <Title info={this.state} />
         <br />
         <Highlights highlights={this.state.highlights} />
@@ -93,9 +94,16 @@ class App extends React.Component {
         <Description desc={this.state.description} />
         <br />
         <Amenities amenities={this.state.amenities} />
-      </div>
+      </StyledMainDiv>
     );
   }
 }
+
+const StyledMainDiv = styled.div`
+  width: 655px;
+  font-size: 16px;
+  font-weight: 250;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+`
 
 ReactDOM.render(<App />, document.getElementById('app'));
