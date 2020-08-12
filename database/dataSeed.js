@@ -118,9 +118,9 @@ const titles = [
   "Historic South Park Private Room"
 ];
 
-// 100 Random user profile photos from randomuser.me
+// 50 Random user profile photos from randomuser.me
 let hostPhotos = [];
-
+// Seed hostPhotos array with S3 image links
 for (let i = 1; i <= 50; i++) {
   hostPhotos.push(`${s3}photo${i}.jpg`)
 }
