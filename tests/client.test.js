@@ -11,6 +11,15 @@ import Amenities from '../client/components/Amenities.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
+describe('App Component', () => {
+
+  test('div should exist', () => {
+    const app = mount(<App />);
+    expect(app.find('div')).toExist();
+  })
+
+});
+
 describe('Title Component', () => {
 
   test('div should exist with the correct text and image', () => {
@@ -60,7 +69,7 @@ describe('Description Component', () => {
 describe('Amenities Component', () => {
 
   test('div should exist with the correct text and image', () => {
-    const props = [{name: 'amenity'}];
+    const props = [{ID: 1, name: 'amenity'}];
     const amenities = mount(<Amenities amenities={props} />);
     expect(amenities.find('div')).toExist();
     expect(amenities).toIncludeText('amenity');
