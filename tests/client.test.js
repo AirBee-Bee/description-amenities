@@ -1,3 +1,4 @@
+import 'jsdom-global/register';
 import React from 'react';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -19,11 +20,28 @@ describe('Title Component', () => {
       guests: 2,
       rooms: 1,
       beds: 1,
-      baths: 1
+      baths: 1,
+      hostPhoto: 'URL'
     };
-    const wrapper = shallow(<Title info={info} />);
-    expect(wrapper).toExist();
-    expect(wrapper).toIncludeText('title');
+    const title = mount(<Title info={info} />);
+    expect(title).toExist();
+    expect(title.find('img')).toExist();
+    expect(title).toIncludeText('title');
+    expect(title).toIncludeText('host');
+    expect(title).toIncludeText('2');
+    expect(title).toIncludeText('1');
+  });
+
+});
+
+describe('Highlights Component', () => {
+
+  test('div should exist with the correct text and images', () => {
+    const highlights = [{ID: 1, url: 'URL', name: 'name'}];
+    const highlightsComponent = mount(<Highlights highlights={highlights} />);
+    expect(highlightsComponent).toExist();
+    expect(highlightsComponent.find('img').prop('src')).toEqual('URL');
+    expect(highlightsComponent).toIncludeText('name');
   });
 
 });
@@ -31,10 +49,10 @@ describe('Title Component', () => {
 describe('Description Component', () => {
 
   test('div should exist with the correct text', () => {
-    const wrapper = shallow(<Description desc='Hello' />);
-    expect(wrapper.find('div')).toExist();
-    expect(wrapper.find('div')).toHaveText('Hello');
-    expect(wrapper).toIncludeText('Contact host');
+    const description = mount(<Description desc='Hello' />);
+    expect(description.find('div')).toExist();
+    expect(description).toIncludeText('Hello');
+    expect(description).toIncludeText('Contact host');
   });
 
 });
