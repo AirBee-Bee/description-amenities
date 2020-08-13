@@ -16,6 +16,7 @@ describe('App Component', () => {
   test('div should exist', () => {
     const app = mount(<App />);
     expect(app.find('div')).toExist();
+    // TODO - add more tests
   })
 
 });
