@@ -14,7 +14,9 @@
     ],
     "setupFilesAfterEnv": [
       "./node_modules/jest-enzyme/lib/index.js"
-    ]
+    ],
+    "collectCoverage": true,
+    "coverageReporters": ["text"]
   },
   "scripts": {
     "seed": "node database/dataSeed.js",
