@@ -24,3 +24,5 @@ coverage
 build/
 dist/
 
+# Bundle file
+public/bundle.js
