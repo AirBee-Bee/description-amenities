@@ -130,14 +130,14 @@ class App extends React.Component {
                       content: {
                         width: '780px',
                         margin: 'auto',
-                        borderRadius: '15px'
+                        borderRadius: '15px',
+                        transition: 'opacity 0.3s ease-out, bottom 0.3s ease-out'
                       }
                     }}
+                    appElement={document.getElementById('app')}
         >
-          <Modal style={{
-            width: '500px'
-          }}
-                 closeModal={this.closeModal}
+          <Modal closeModal={this.closeModal}
+                 amenities={this.state.amenities}
           />
         </ReactModal>
       </StyledMainDiv>

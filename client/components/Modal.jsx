@@ -28,7 +28,7 @@ const StyledTitle = styled.div`
   padding-left: 10px;
 `
 
-function Modal({ closeModal }) {
+function Modal({ closeModal, amenities }) {
   return (
     <StyledModal>
       <StyledEsc onClick={closeModal}>X</StyledEsc>
