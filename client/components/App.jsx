@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import ReactModal from 'react-modal';
 import Title from './Title.jsx';
 import Highlights from './Highlights.jsx';
 import Description from './Description.jsx';
 import Amenities from './Amenities.jsx';
+import Modal from './Modal.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +24,8 @@ class App extends React.Component {
       baths: 0,
       amenities: [],
       highlights: [],
-      readMore: false
+      readMore: false,
+      modal: false
     };
 
     // Bind methods to correct context
@@ -93,6 +96,14 @@ class App extends React.Component {
     });
   }
 
+  openModal() {
+
+  }
+
+  closeModal() {
+
+  }
+
   render() {
     return (
       <StyledMainDiv>
@@ -102,9 +113,15 @@ class App extends React.Component {
         <br/>
         <Description desc={this.state.description}
                      readMore={this.state.readMore}
-                     showFullDescription={this.showFullDescription} />
+                     showFullDescription={this.showFullDescription}
+        />
         <br/>
         <Amenities amenities={this.state.amenities} />
+        <ReactModal isOpen={this.state.modal}
+                    // onRequestClose={}
+        >
+          <Modal />
+        </ReactModal>
       </StyledMainDiv>
     );
   }
