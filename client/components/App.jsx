@@ -109,7 +109,9 @@ class App extends React.Component {
       <StyledMainDiv>
         <Title info={this.state} />
         <br/>
-        <Highlights highlights={this.state.highlights} host={this.state.host} />
+        <Highlights highlights={this.state.highlights}
+                    host={this.state.host}
+        />
         <br/>
         <Description desc={this.state.description}
                      readMore={this.state.readMore}
@@ -121,8 +123,21 @@ class App extends React.Component {
         />
         <ReactModal isOpen={this.state.modal}
                     onRequestClose={this.closeModal}
+                    style={{
+                      overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, .5)',
+                      },
+                      content: {
+                        width: '780px',
+                        margin: 'auto',
+                        borderRadius: '15px'
+                      }
+                    }}
         >
-          <Modal />
+          <Modal style={{
+            width: '500px'
+          }}
+          />
         </ReactModal>
       </StyledMainDiv>
     );
