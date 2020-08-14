@@ -25,7 +25,7 @@ class App extends React.Component {
       amenities: [],
       highlights: [],
       readMore: false,
-      modal: false
+      modal: true
     };
 
     // Bind methods to correct context
@@ -137,6 +137,7 @@ class App extends React.Component {
           <Modal style={{
             width: '500px'
           }}
+                 closeModal={this.closeModal}
           />
         </ReactModal>
       </StyledMainDiv>
