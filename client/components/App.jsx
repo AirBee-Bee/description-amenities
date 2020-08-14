@@ -101,6 +101,7 @@ class App extends React.Component {
 }
 
 const StyledMainDiv = styled.div`
+  color: #222222;
   width: 655px;
   font-size: 16px;
   font-weight: 250;
