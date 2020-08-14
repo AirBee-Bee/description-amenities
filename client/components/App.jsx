@@ -33,6 +33,8 @@ class App extends React.Component {
     this.fetchAmenities = this.fetchAmenities.bind(this);
     this.fetchHighlights = this.fetchHighlights.bind(this);
     this.showFullDescription = this.showFullDescription.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 
   }
 
@@ -91,17 +93,15 @@ class App extends React.Component {
   }
 
   showFullDescription() {
-    this.setState({
-      readMore: true
-    });
+    this.setState({ readMore: true });
   }
 
   openModal() {
-
+    this.setState({ modal: true });
   }
 
   closeModal() {
-
+    this.setState({ modal: false });
   }
 
   render() {
@@ -116,9 +116,11 @@ class App extends React.Component {
                      showFullDescription={this.showFullDescription}
         />
         <br/>
-        <Amenities amenities={this.state.amenities} />
+        <Amenities amenities={this.state.amenities}
+                   openModal={this.openModal}
+        />
         <ReactModal isOpen={this.state.modal}
-                    // onRequestClose={}
+                    onRequestClose={this.closeModal}
         >
           <Modal />
         </ReactModal>
