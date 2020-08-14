@@ -8,10 +8,11 @@ const StyledDiv = styled.div`
 `
 const MainDiv = styled.div`
   display: flex;
-  flex-direction: row;
 `
 
 const StyledHighlightTitle = styled.div`
+  display: flex;
+  align-items: flex-start;
   font-size: 16px;
   font-weight: 600;
   padding: 5px 0px 5px 0px;
@@ -20,7 +21,7 @@ const StyledHighlightTitle = styled.div`
 const StyledIcon = styled.img`
   width: 30px;
   height: 30px;
-  padding: 0px 15px 0px 0px;
+  padding: 3px 15px 0px 0px;
 `
 
 const StyledDesc = styled.div`
@@ -46,13 +47,13 @@ function Highlights({ highlights, host }) {
         let title = hl.highlight_ID === 7 ? `${host} is a ${hl.name}` : hl.name;
         let index = hl.highlight_ID;
         return (
-          <div key={hl.highlight_ID}>
+          <MainDiv key={hl.highlight_ID}>
             <div><StyledIcon src={hl.url} /></div>
             <div>
               <StyledHighlightTitle>{title}</StyledHighlightTitle>
               <StyledDesc>{descriptions[index - 1]}</StyledDesc>
             </div>
-          </div>
+          </MainDiv>
         )
       })}
     </StyledDiv>
