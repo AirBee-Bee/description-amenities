@@ -90,7 +90,7 @@ class App extends React.Component {
       <StyledMainDiv>
         <Title info={this.state} />
         <br />
-        <Highlights highlights={this.state.highlights} />
+        <Highlights highlights={this.state.highlights} host={this.state.host} />
         <br />
         <Description desc={this.state.description} />
         <br />
