@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const StyledMainDiv = styled.div`
+  border-bottom: 1px solid #c9c9c9;
+  margin-bottom: 50px;
+`
+
 const StyledTitle = styled.div`
   font-size: 22px;
   font-weight: 500;
@@ -12,6 +17,7 @@ const StyledContainer = styled.div`
   align-items: stretch;
   justify-content: flex-start;
   flex-wrap: wrap;
+  padding: 0px 0px 20px 0px;
 `
 
 const StyledAmenity = styled.div`
@@ -27,11 +33,27 @@ const StyledIcon = styled.img`
   padding: 0px 10px 0px 0px;
 `
 
+const StyledButton = styled.div`
+  width: 175px;
+  padding: 13px 23px 13px 23px;
+  margin-bottom: 45px;
+  border: 1px solid #222222;
+  border-radius 8px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: #f7f7f7;
+  }
+`
+
 function Amenities({ amenities }) {
   let topTen = amenities.slice(0, 10);
 
   return (
-    <div>
+    <StyledMainDiv>
       <StyledTitle>Amenities</StyledTitle>
       <StyledContainer>
         {topTen.map(amn => {
@@ -45,7 +67,10 @@ function Amenities({ amenities }) {
           )
         })}
       </StyledContainer>
-    </div>
+      <StyledButton>
+        {`Show all ${amenities.length} amenities`}
+      </StyledButton>
+    </StyledMainDiv>
   );
 }
 
