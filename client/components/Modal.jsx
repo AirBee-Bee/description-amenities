@@ -28,11 +28,32 @@ const StyledTitle = styled.div`
   padding-left: 10px;
 `
 
+const StyledCategory = styled.div`
+  font-size: 18px;
+  font-weight: 500;
+`
+
 function Modal({ closeModal, amenities }) {
+  const basic = ['Basic'];
+  const facilities = ['Facilities'];
+  const dining = ['Dining'];
+  const bedBath = ['Bed and Bath'];
+  const notIncluded = ['Not Included'];
+
+  // for (let i = 0; i < amenities.length; i++) {
+
+  // }
+
   return (
     <StyledModal>
       <StyledEsc onClick={closeModal}>X</StyledEsc>
       <StyledTitle>Amenities</StyledTitle>
+      {/* show these category titles if they have amenities */}
+      {basic.length > 1 ? basic[0] : null}
+      {facilities.length > 1 ? facilities[0] : null}
+      {dining.length > 1 ? dining[0] : null}
+      {bedBath.length > 1 ? bedBath[0] : null}
+      {notIncluded.length > 1 ? notIncluded[0] : null}
     </StyledModal>
   );
 }

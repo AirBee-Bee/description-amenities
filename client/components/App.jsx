@@ -130,8 +130,7 @@ class App extends React.Component {
                       content: {
                         width: '780px',
                         margin: 'auto',
-                        borderRadius: '15px',
-                        transition: 'opacity 0.3s ease-out, bottom 0.3s ease-out'
+                        borderRadius: '15px'
                       }
                     }}
                     appElement={document.getElementById('app')}
