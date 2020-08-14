@@ -29,6 +29,7 @@ class App extends React.Component {
     this.fetchListingInfo = this.fetchListingInfo.bind(this);
     this.fetchAmenities = this.fetchAmenities.bind(this);
     this.fetchHighlights = this.fetchHighlights.bind(this);
+    this.showFullDescription = this.showFullDescription.bind(this);
 
   }
 
@@ -86,15 +87,23 @@ class App extends React.Component {
       });
   }
 
+  showFullDescription() {
+    this.setState({
+      readMore: true
+    });
+  }
+
   render() {
     return (
       <StyledMainDiv>
         <Title info={this.state} />
-        <br />
+        <br/>
         <Highlights highlights={this.state.highlights} host={this.state.host} />
-        <br />
-        <Description desc={this.state.description} readMore={this.state.readMore} />
-        <br />
+        <br/>
+        <Description desc={this.state.description}
+                     readMore={this.state.readMore}
+                     showFullDescription={this.showFullDescription} />
+        <br/>
         <Amenities amenities={this.state.amenities} />
       </StyledMainDiv>
     );

@@ -27,12 +27,12 @@ const StyledText = styled.span`
   }
 `
 
-function Description({ desc, readMore }) {
+function Description({ desc, readMore, showFullDescription }) {
   let description;
   if (readMore) {
   description = <div>{desc}</div>;
   } else {
-  description = <div>{desc.slice(0, 400)}...&nbsp;<StyledReadMore>read more</StyledReadMore></div>;
+  description = <div>{desc.slice(0, 400)}...&nbsp;<StyledReadMore onClick={showFullDescription}>read more</StyledReadMore></div>;
   }
   return (
     <StyledDiv>
