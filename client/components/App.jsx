@@ -21,7 +21,8 @@ class App extends React.Component {
       beds: 0,
       baths: 0,
       amenities: [],
-      highlights: []
+      highlights: [],
+      readMore: false
     };
 
     // Bind methods to correct context
@@ -92,7 +93,7 @@ class App extends React.Component {
         <br />
         <Highlights highlights={this.state.highlights} host={this.state.host} />
         <br />
-        <Description desc={this.state.description} />
+        <Description desc={this.state.description} readMore={this.state.readMore} />
         <br />
         <Amenities amenities={this.state.amenities} />
       </StyledMainDiv>
