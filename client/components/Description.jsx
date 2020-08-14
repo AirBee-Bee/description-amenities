@@ -6,6 +6,15 @@ const StyledDiv = styled.div`
   border-bottom: 1px solid #c9c9c9;
 `
 
+const StyledReadMore = styled.span`
+  font-weight: 500;
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 const StyledContact = styled.div`
   padding: 40px 0px 0px 0px;
   font-weight: 500;
@@ -18,10 +27,16 @@ const StyledText = styled.span`
   }
 `
 
-function Description({ desc }) {
+function Description({ desc, readMore, showFullDescription }) {
+  let description;
+  if (readMore) {
+  description = <div>{desc}</div>;
+  } else {
+  description = <div>{desc.slice(0, 400)}...&nbsp;<StyledReadMore onClick={showFullDescription}>read more</StyledReadMore></div>;
+  }
   return (
     <StyledDiv>
-      <div>{desc}</div>
+      {description}
       <StyledContact><StyledText>Contact host</StyledText></StyledContact>
     </StyledDiv>
   );
