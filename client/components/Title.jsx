@@ -37,9 +37,9 @@ function Title({ info }) {
         <StyledTitle>{info.title} hosted by {info.host}</StyledTitle>
         <div>
           {info.guests} guests&nbsp;·&nbsp;
-        {info.rooms} rooms&nbsp;·&nbsp;
-        {info.beds} beds&nbsp;·&nbsp;
-        {info.baths} baths
+          {info.rooms} rooms&nbsp;·&nbsp;
+          {info.beds} beds&nbsp;·&nbsp;
+          {info.baths} baths
       </div>
       </StyledTitleDiv>
       <StyledPhoto src={info.hostPhoto} />

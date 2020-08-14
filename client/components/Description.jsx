@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
+  letter-spacing 0.04rem;
   padding: 20px 0px 45px 0px;
   border-bottom: 1px solid #c9c9c9;
 `
