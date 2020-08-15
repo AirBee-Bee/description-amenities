@@ -58,11 +58,11 @@ function Amenities({ amenities, openModal }) {
       <StyledContainer>
         {topTen.map(amn => {
           return (
-            <StyledAmenity>
+            <StyledAmenity key={amn.amenity_ID}>
               <div>
                 <StyledIcon src={amn.url} />
               </div>
-              <div key={amn.ID}>{amn.name}&nbsp;</div>
+              <div>{amn.name}&nbsp;</div>
             </StyledAmenity>
           )
         })}

@@ -34,26 +34,50 @@ const StyledCategory = styled.div`
 `
 
 function Modal({ closeModal, amenities }) {
-  const basic = ['Basic'];
-  const facilities = ['Facilities'];
-  const dining = ['Dining'];
-  const bedBath = ['Bed and Bath'];
-  const notIncluded = ['Not Included'];
+  const basic = [];
+  const facilities = [];
+  const dining = [];
+  const bedBath = [];
+  const notIncluded = [
+    '24 Hour Check-In',
+    'Air Conditioning',
+    'Heating',
+    'Cable TV',
+    'Free WiFi',
+    'Smoke Detector',
+    'Free Parking',
+    'Washer/Dryer'
+  ];
 
-  // for (let i = 0; i < amenities.length; i++) {
-
-  // }
+  for (let i = 0; i < amenities.length; i++) {
+    if (amenities[i].amenity_ID > 0 && amenities[i].amenity_ID < 7) {
+      basic.push(amenities[i].name);
+    }
+    if (amenities[i].amenity_ID > 6 && amenities[i].amenity_ID < 16) {
+      facilities.push(amenities[i].name);
+    }
+    if (amenities[i].amenity_ID > 15 && amenities[i].amenity_ID < 20) {
+      dining.push(amenities[i].name);
+    }
+    if (amenities[i].amenity_ID > 19) {
+      bedBath.push(amenities[i].name);
+    }
+    if (notIncluded.includes(amenities[i].name)) {
+      let index = notIncluded.indexOf(amenities[i].name);
+      notIncluded.splice(index, 1)
+    }
+  }
 
   return (
     <StyledModal>
       <StyledEsc onClick={closeModal}>X</StyledEsc>
       <StyledTitle>Amenities</StyledTitle>
       {/* show these category titles if they have amenities */}
-      {basic.length > 1 ? basic[0] : null}
-      {facilities.length > 1 ? facilities[0] : null}
-      {dining.length > 1 ? dining[0] : null}
-      {bedBath.length > 1 ? bedBath[0] : null}
-      {notIncluded.length > 1 ? notIncluded[0] : null}
+      {basic.length > 0 ? 'Basic' : null}
+      {facilities.length > 0 ? 'Facilities' : null}
+      {dining.length > 0 ? 'Dining' : null}
+      {bedBath.length > 0 ? 'Bed and Bath' : null}
+      {notIncluded.length > 0 ? 'Not Included' : null}
     </StyledModal>
   );
 }
