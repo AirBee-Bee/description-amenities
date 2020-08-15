@@ -29,14 +29,14 @@ const StyledEsc = styled.div`
 const StyledTitle = styled.div`
   font-size: 22px;
   font-weight: 500;
-  padding: 0px 0px 0px 10px;
+  padding: 0px 0px 0px 25px;
 `
 
 // Category section - general style
 const StyledCategory = styled.div`
   font-size: 17px;
   font-weight: 500;
-  padding-left: 10px;
+  padding-left: 25px;
 `
 
 // Positioning for Category Titles

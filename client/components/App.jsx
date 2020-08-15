@@ -26,7 +26,7 @@ class App extends React.Component {
       amenities: [],
       highlights: [],
       readMore: false,
-      modal: false
+      modal: true
     };
 
     // Bind methods to correct context
