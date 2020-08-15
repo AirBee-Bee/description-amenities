@@ -25,7 +25,7 @@ class App extends React.Component {
       amenities: [],
       highlights: [],
       readMore: false,
-      modal: false
+      modal: true
     };
 
     // Bind methods to correct context
@@ -125,12 +125,13 @@ class App extends React.Component {
                     onRequestClose={this.closeModal}
                     style={{
                       overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, .5)',
+                        backgroundColor: 'rgba(0, 0, 0, .5)'
                       },
                       content: {
                         width: '780px',
                         margin: 'auto',
-                        borderRadius: '15px'
+                        borderRadius: '15px',
+                        boxShadow: '0px 0px 30px rgba(0, 0, 0, .25)'
                       }
                     }}
                     appElement={document.getElementById('app')}
