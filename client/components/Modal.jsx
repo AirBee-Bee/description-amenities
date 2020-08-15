@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// General Modal style
 const StyledModal = styled.div`
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
   color: #222222;
 `
 
+// Escape button style
 const StyledEsc = styled.div`
   display: flex;
   align-items: center;
@@ -23,22 +25,26 @@ const StyledEsc = styled.div`
   }
 `
 
+// Amenities title style
 const StyledTitle = styled.div`
   font-size: 22px;
   font-weight: 500;
   padding: 0px 0px 0px 10px;
 `
 
+// Category section - general style
 const StyledCategory = styled.div`
   font-size: 17px;
   font-weight: 500;
   padding-left: 10px;
 `
 
+// Positioning for Category Titles
 const StyledCT = styled.div`
   padding-top: 50px;
 `
 
+// Amenity style
 const StyledAmenity = styled.div`
   font-size: 14px;
   font-weight: normal;
@@ -46,10 +52,12 @@ const StyledAmenity = styled.div`
   border-bottom: 1px solid #dedede;
 `
 
+// Strikethrough for amenities not included
 const StyledNotIncluded = styled(StyledAmenity)`
   text-decoration: line-through;
 `
 
+// Amenity Descriptions style
 const StyledDesc = styled.div`
   color: #717171;
   font-weight: 300;
@@ -57,7 +65,9 @@ const StyledDesc = styled.div`
   padding-top: 6px;
 `
 
+// MODAL COMPONENT
 function Modal({ closeModal, amenities }) {
+  // Setup sorting structure for categories
   const basic = [];
   const facilities = [];
   const dining = [];
@@ -73,7 +83,7 @@ function Modal({ closeModal, amenities }) {
     'Washer/Dryer'
   ];
 
-  // Descriptions
+  // Descriptions for Amenities as needed
   const wifi = <StyledDesc>Continuous access in the listing</StyledDesc>
   const heating = <StyledDesc>Central heating or a heater in the listing</StyledDesc>
   const checkIn24Hrs = <StyledDesc>Check-In is available 24 hours a day</StyledDesc>
@@ -81,19 +91,25 @@ function Modal({ closeModal, amenities }) {
   const hotTub = <StyledDesc>This listing features a hot tub on the property</StyledDesc>
   const kitchen = <StyledDesc>Space where guests can cook their own meals</StyledDesc>
 
+  // Sort Amenities into categories
   for (let i = 0; i < amenities.length; i++) {
+    // Basic
     if (amenities[i].amenity_ID > 0 && amenities[i].amenity_ID < 7) {
       basic.push(amenities[i].name);
     }
+    // Facilities
     if (amenities[i].amenity_ID > 6 && amenities[i].amenity_ID < 16) {
       facilities.push(amenities[i].name);
     }
+    // Dining
     if (amenities[i].amenity_ID > 15 && amenities[i].amenity_ID < 20) {
       dining.push(amenities[i].name);
     }
+    // Bed & Bath
     if (amenities[i].amenity_ID > 19) {
       bedBath.push(amenities[i].name);
     }
+    // Not Included
     if (notIncluded.includes(amenities[i].name)) {
       let index = notIncluded.indexOf(amenities[i].name);
       notIncluded.splice(index, 1)
@@ -102,6 +118,8 @@ function Modal({ closeModal, amenities }) {
 
   return (
     <StyledModal>
+
+      {/* Escape button and Title */}
       <StyledEsc onClick={closeModal}>X</StyledEsc>
       <StyledTitle>Amenities</StyledTitle>
 
@@ -130,7 +148,7 @@ function Modal({ closeModal, amenities }) {
           return (
             <StyledAmenity key={amn}>
               {amn}
-              <br/>
+              <br />
               {/* add descriptions if applicable */}
               {amn === 'Pool' ? pool : null}
               {amn === 'Hot Tub' ? hotTub : null}
@@ -143,10 +161,11 @@ function Modal({ closeModal, amenities }) {
 
         {dining.map(amn => {
           return (
-          <StyledAmenity key={amn}>
-            {amn}
-            <br/>
-            {amn === 'Kitchen' ? kitchen : null}
+            <StyledAmenity key={amn}>
+              {amn}
+              <br />
+              {/* add descriptions if applicable */}
+              {amn === 'Kitchen' ? kitchen : null}
             </StyledAmenity>
           );
         })}
