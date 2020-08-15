@@ -25,12 +25,13 @@ const StyledEsc = styled.div`
 const StyledTitle = styled.div`
   font-size: 22px;
   font-weight: 500;
-  padding-left: 10px;
+  padding: 0px 0px 32px 10px;
 `
 
 const StyledCategory = styled.div`
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
+  padding-left: 10px;
 `
 
 function Modal({ closeModal, amenities }) {
@@ -72,12 +73,14 @@ function Modal({ closeModal, amenities }) {
     <StyledModal>
       <StyledEsc onClick={closeModal}>X</StyledEsc>
       <StyledTitle>Amenities</StyledTitle>
-      {/* show these category titles if they have amenities */}
-      {basic.length > 0 ? 'Basic' : null}
-      {facilities.length > 0 ? 'Facilities' : null}
-      {dining.length > 0 ? 'Dining' : null}
-      {bedBath.length > 0 ? 'Bed and Bath' : null}
-      {notIncluded.length > 0 ? 'Not Included' : null}
+      <StyledCategory>
+        {/* show these category titles if they have amenities */}
+        <div>{basic.length > 0 ? 'Basic' : null}</div>
+        <div>{facilities.length > 0 ? 'Facilities' : null}</div>
+        <div>{dining.length > 0 ? 'Dining' : null}</div>
+        <div>{bedBath.length > 0 ? 'Bed and Bath' : null}</div>
+        <div>{notIncluded.length > 0 ? 'Not Included' : null}</div>
+      </StyledCategory>
     </StyledModal>
   );
 }
