@@ -50,6 +50,13 @@ const StyledNotIncluded = styled(StyledAmenity)`
   text-decoration: line-through;
 `
 
+const StyledDesc = styled.div`
+  color: #717171;
+  font-weight: 300;
+  letter-spacing 0.02rem;
+  padding-top: 6px;
+`
+
 function Modal({ closeModal, amenities }) {
   const basic = [];
   const facilities = [];
@@ -65,6 +72,14 @@ function Modal({ closeModal, amenities }) {
     'Free Parking',
     'Washer/Dryer'
   ];
+
+  // Descriptions
+  const wifi = <StyledDesc>Continuous access in the listing</StyledDesc>
+  const heating = <StyledDesc>Central heating or a heater in the listing</StyledDesc>
+  const checkIn24Hrs = <StyledDesc>Check-In is available 24 hours a day</StyledDesc>
+  const pool = <StyledDesc>This listing features a pool on the property</StyledDesc>
+  const hotTub = <StyledDesc>This listing features a hot tub on the property</StyledDesc>
+  const kitchen = <StyledDesc>Space where guests can cook their own meals</StyledDesc>
 
   for (let i = 0; i < amenities.length; i++) {
     if (amenities[i].amenity_ID > 0 && amenities[i].amenity_ID < 7) {
@@ -94,30 +109,58 @@ function Modal({ closeModal, amenities }) {
 
         {/* Basic */}
         <StyledCT>{basic.length > 0 ? 'Basic' : null}</StyledCT>
+
         {basic.map(amn => {
-          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+          return (
+            <StyledAmenity key={amn}>
+              {amn}
+              <br />
+              {/* add descriptions if applicable */}
+              {amn === 'Free WiFi' ? wifi : null}
+              {amn === 'Heating' ? heating : null}
+              {amn === '24 Hour Check-In' ? checkIn24Hrs : null}
+            </StyledAmenity>
+          );
         })}
 
         {/* Facilities */}
         <StyledCT>{facilities.length > 0 ? 'Facilities' : null}</StyledCT>
+
         {facilities.map(amn => {
-          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+          return (
+            <StyledAmenity key={amn}>
+              {amn}
+              <br/>
+              {/* add descriptions if applicable */}
+              {amn === 'Pool' ? pool : null}
+              {amn === 'Hot Tub' ? hotTub : null}
+            </StyledAmenity>
+          );
         })}
 
         {/* Dining */}
         <StyledCT>{dining.length > 0 ? 'Dining' : null}</StyledCT>
+
         {dining.map(amn => {
-          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+          return (
+          <StyledAmenity key={amn}>
+            {amn}
+            <br/>
+            {amn === 'Kitchen' ? kitchen : null}
+            </StyledAmenity>
+          );
         })}
 
         {/* Bed and Bath */}
         <StyledCT>{bedBath.length > 0 ? 'Bed and Bath' : null}</StyledCT>
+
         {bedBath.map(amn => {
           return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
         })}
 
         {/* Not Included */}
         <StyledCT>{notIncluded.length > 0 ? 'Not Included' : null}</StyledCT>
+
         {notIncluded.map(amn => {
           return <StyledNotIncluded key={amn}>{amn}</StyledNotIncluded>;
         })}

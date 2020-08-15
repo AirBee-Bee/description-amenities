@@ -90,7 +90,7 @@ const amenities = [
   { name: 'Restaurant Nearby', url: `${s3}kitchen.JPG` },
   { name: 'Shopping Nearby', url: `${s3}shopping.JPG` },
   // Dining
-  { name: 'Kitchen Utensils', url: `${s3}kitchen.JPG` },
+  { name: 'Kitchen', url: `${s3}kitchen.JPG` },
   { name: 'Barbecue', url: `${s3}kitchen.JPG` },
   { name: 'Microwave', url: `${s3}kitchen.JPG` },
   { name: 'Oven', url: `${s3}kitchen.JPG` },
