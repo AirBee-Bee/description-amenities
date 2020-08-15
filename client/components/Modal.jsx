@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledModal = styled.div`
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  color: #222222;
 `
 
 const StyledEsc = styled.div`
@@ -25,7 +26,7 @@ const StyledEsc = styled.div`
 const StyledTitle = styled.div`
   font-size: 22px;
   font-weight: 500;
-  padding: 0px 0px 32px 10px;
+  padding: 0px 0px 0px 10px;
 `
 
 const StyledCategory = styled.div`
@@ -34,14 +35,18 @@ const StyledCategory = styled.div`
   padding-left: 10px;
 `
 
+const StyledCT = styled.div`
+  padding-top: 50px;
+`
+
 const StyledAmenity = styled.div`
   font-size: 14px;
   font-weight: normal;
+  padding: 32px 0px 32px 0px;
+  border-bottom: 1px solid #dedede;
 `
 
-const StyledNotIncluded = styled.div`
-  font-size: 14px;
-  font-weight: normal;
+const StyledNotIncluded = styled(StyledAmenity)`
   text-decoration: line-through;
 `
 
@@ -84,32 +89,39 @@ function Modal({ closeModal, amenities }) {
     <StyledModal>
       <StyledEsc onClick={closeModal}>X</StyledEsc>
       <StyledTitle>Amenities</StyledTitle>
+
       <StyledCategory>
+
         {/* Basic */}
-        <div>{basic.length > 0 ? 'Basic' : null}</div>
+        <StyledCT>{basic.length > 0 ? 'Basic' : null}</StyledCT>
         {basic.map(amn => {
           return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
         })}
+
         {/* Facilities */}
-        <div>{facilities.length > 0 ? 'Facilities' : null}</div>
+        <StyledCT>{facilities.length > 0 ? 'Facilities' : null}</StyledCT>
         {facilities.map(amn => {
           return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
         })}
+
         {/* Dining */}
-        <div>{dining.length > 0 ? 'Dining' : null}</div>
+        <StyledCT>{dining.length > 0 ? 'Dining' : null}</StyledCT>
         {dining.map(amn => {
           return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
         })}
+
         {/* Bed and Bath */}
-        <div>{bedBath.length > 0 ? 'Bed and Bath' : null}</div>
+        <StyledCT>{bedBath.length > 0 ? 'Bed and Bath' : null}</StyledCT>
         {bedBath.map(amn => {
           return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
         })}
+
         {/* Not Included */}
-        <div>{notIncluded.length > 0 ? 'Not Included' : null}</div>
+        <StyledCT>{notIncluded.length > 0 ? 'Not Included' : null}</StyledCT>
         {notIncluded.map(amn => {
           return <StyledNotIncluded key={amn}>{amn}</StyledNotIncluded>;
         })}
+
       </StyledCategory>
     </StyledModal>
   );
