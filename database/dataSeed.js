@@ -72,30 +72,34 @@ seedListings();
 // 26 Amenities (real from Airbnb)
 // w/ URLs to icon images
 const amenities = [
+  // Basic
   { name: '24 Hour Check-In', url: `${s3}24hrcheckin.JPG` },
   { name: 'Air Conditioning', url: `${s3}ac.JPG` },
-  { name: 'Alarm Clock', url: `${s3}24hrcheckin.JPG` },
-  { name: 'Balcony', url: `${s3}balcony.JPG` },
-  { name: 'Bathtub', url: `${s3}bathtub.JPG` },
-  { name: 'Barbecue', url: `${s3}kitchen.JPG` },
   { name: 'Cable TV', url: `${s3}cabletv.JPG` },
-  { name: 'Cats Allowed', url: `${s3}cats.JPG` },
-  { name: 'Kitchen Utensils', url: `${s3}kitchen.JPG` },
-  { name: 'Dogs Allowed', url: `${s3}dogs.JPG` },
-  { name: 'Free Parking', url: `${s3}parking.JPG` },
   { name: 'Free WiFi', url: `${s3}wifi.JPG` },
-  { name: 'Hair Dryer', url: `${s3}hairdryer.JPG` },
   { name: 'Heating', url: `${s3}heatfire.JPG` },
+  { name: 'Smoke Detector', url: `${s3}heatfire.JPG` },
+  // Facilities
+  { name: 'Free Parking', url: `${s3}parking.JPG` },
+  { name: 'Pool', url: `${s3}hottub.JPG` },
   { name: 'Hot Tub', url: `${s3}hottub.JPG` },
   { name: 'Fireplace', url: `${s3}heatfire.JPG` },
-  { name: 'King Size Bed', url: `${s3}bed.JPG` },
-  { name: 'Microwave', url: `${s3}kitchen.JPG` },
-  { name: 'Pool', url: `${s3}hottub.JPG` },
-  { name: 'Oven', url: `${s3}kitchen.JPG` },
+  { name: 'Balcony', url: `${s3}balcony.JPG` },
+  { name: 'Cats Allowed', url: `${s3}cats.JPG` },
+  { name: 'Dogs Allowed', url: `${s3}dogs.JPG` },
   { name: 'Restaurant Nearby', url: `${s3}kitchen.JPG` },
   { name: 'Shopping Nearby', url: `${s3}shopping.JPG` },
+  // Dining
+  { name: 'Kitchen', url: `${s3}kitchen.JPG` },
+  { name: 'Barbecue', url: `${s3}kitchen.JPG` },
+  { name: 'Microwave', url: `${s3}kitchen.JPG` },
+  { name: 'Oven', url: `${s3}kitchen.JPG` },
+  // Bed and Bath
+  { name: 'King Size Bed', url: `${s3}bed.JPG` },
   { name: 'Shower', url: `${s3}bathtub.JPG` },
-  { name: 'Smoke Detector', url: `${s3}heatfire.JPG` },
+  { name: 'Bathtub', url: `${s3}bathtub.JPG` },
+  { name: 'Hair Dryer', url: `${s3}hairdryer.JPG` },
+  { name: 'Alarm Clock', url: `${s3}24hrcheckin.JPG` },
   { name: 'Sofa', url: `${s3}sofa.JPG` },
   { name: 'Stereo', url: `${s3}stereo.JPG` }
 ];

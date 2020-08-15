@@ -49,7 +49,7 @@ const StyledButton = styled.div`
   }
 `
 
-function Amenities({ amenities }) {
+function Amenities({ amenities, openModal }) {
   let topTen = amenities.slice(0, 10);
 
   return (
@@ -58,16 +58,16 @@ function Amenities({ amenities }) {
       <StyledContainer>
         {topTen.map(amn => {
           return (
-            <StyledAmenity>
+            <StyledAmenity key={amn.amenity_ID}>
               <div>
                 <StyledIcon src={amn.url} />
               </div>
-              <div key={amn.ID}>{amn.name}&nbsp;</div>
+              <div>{amn.name}&nbsp;</div>
             </StyledAmenity>
           )
         })}
       </StyledContainer>
-      <StyledButton>
+      <StyledButton onClick={openModal}>
         {`Show all ${amenities.length} amenities`}
       </StyledButton>
     </StyledMainDiv>

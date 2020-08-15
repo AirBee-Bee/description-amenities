@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import ReactModal from 'react-modal';
 import Title from './Title.jsx';
 import Highlights from './Highlights.jsx';
 import Description from './Description.jsx';
 import Amenities from './Amenities.jsx';
+import Modal from './Modal.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +24,8 @@ class App extends React.Component {
       baths: 0,
       amenities: [],
       highlights: [],
-      readMore: false
+      readMore: false,
+      modal: false
     };
 
     // Bind methods to correct context
@@ -30,6 +33,8 @@ class App extends React.Component {
     this.fetchAmenities = this.fetchAmenities.bind(this);
     this.fetchHighlights = this.fetchHighlights.bind(this);
     this.showFullDescription = this.showFullDescription.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 
   }
 
@@ -88,9 +93,15 @@ class App extends React.Component {
   }
 
   showFullDescription() {
-    this.setState({
-      readMore: true
-    });
+    this.setState({ readMore: true });
+  }
+
+  openModal() {
+    this.setState({ modal: true });
+  }
+
+  closeModal() {
+    this.setState({ modal: false });
   }
 
   render() {
@@ -98,13 +109,36 @@ class App extends React.Component {
       <StyledMainDiv>
         <Title info={this.state} />
         <br/>
-        <Highlights highlights={this.state.highlights} host={this.state.host} />
+        <Highlights highlights={this.state.highlights}
+                    host={this.state.host}
+        />
         <br/>
         <Description desc={this.state.description}
                      readMore={this.state.readMore}
-                     showFullDescription={this.showFullDescription} />
+                     showFullDescription={this.showFullDescription}
+        />
         <br/>
-        <Amenities amenities={this.state.amenities} />
+        <Amenities amenities={this.state.amenities}
+                   openModal={this.openModal}
+        />
+        <ReactModal isOpen={this.state.modal}
+                    onRequestClose={this.closeModal}
+                    style={{
+                      overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, .5)',
+                      },
+                      content: {
+                        width: '780px',
+                        margin: 'auto',
+                        borderRadius: '15px'
+                      }
+                    }}
+                    appElement={document.getElementById('app')}
+        >
+          <Modal closeModal={this.closeModal}
+                 amenities={this.state.amenities}
+          />
+        </ReactModal>
       </StyledMainDiv>
     );
   }
