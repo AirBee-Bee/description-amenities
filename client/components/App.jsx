@@ -7,6 +7,7 @@ import Highlights from './Highlights.jsx';
 import Description from './Description.jsx';
 import Amenities from './Amenities.jsx';
 import Modal from './Modal.jsx';
+import styles from '../style/modal.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -122,17 +123,10 @@ class App extends React.Component {
                    openModal={this.openModal}
         />
         <ReactModal isOpen={this.state.modal}
+                    className={this.state.modal ? styles.modalOpen : styles.modalClosed}
                     onRequestClose={this.closeModal}
-                    style={{
-                      overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, .5)',
-                      },
-                      content: {
-                        width: '780px',
-                        margin: 'auto',
-                        borderRadius: '15px'
-                      }
-                    }}
+                    overlayClassName={this.state.modal ? styles.overlayIn : styles.overlayOut}
+                    closeTimeoutMS={400}
                     appElement={document.getElementById('app')}
         >
           <Modal closeModal={this.closeModal}
