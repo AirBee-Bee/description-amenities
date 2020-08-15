@@ -34,6 +34,17 @@ const StyledCategory = styled.div`
   padding-left: 10px;
 `
 
+const StyledAmenity = styled.div`
+  font-size: 14px;
+  font-weight: normal;
+`
+
+const StyledNotIncluded = styled.div`
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: line-through;
+`
+
 function Modal({ closeModal, amenities }) {
   const basic = [];
   const facilities = [];
@@ -74,12 +85,31 @@ function Modal({ closeModal, amenities }) {
       <StyledEsc onClick={closeModal}>X</StyledEsc>
       <StyledTitle>Amenities</StyledTitle>
       <StyledCategory>
-        {/* show these category titles if they have amenities */}
+        {/* Basic */}
         <div>{basic.length > 0 ? 'Basic' : null}</div>
+        {basic.map(amn => {
+          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+        })}
+        {/* Facilities */}
         <div>{facilities.length > 0 ? 'Facilities' : null}</div>
+        {facilities.map(amn => {
+          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+        })}
+        {/* Dining */}
         <div>{dining.length > 0 ? 'Dining' : null}</div>
+        {dining.map(amn => {
+          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+        })}
+        {/* Bed and Bath */}
         <div>{bedBath.length > 0 ? 'Bed and Bath' : null}</div>
+        {bedBath.map(amn => {
+          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+        })}
+        {/* Not Included */}
         <div>{notIncluded.length > 0 ? 'Not Included' : null}</div>
+        {notIncluded.map(amn => {
+          return <StyledNotIncluded key={amn}>{amn}</StyledNotIncluded>;
+        })}
       </StyledCategory>
     </StyledModal>
   );
