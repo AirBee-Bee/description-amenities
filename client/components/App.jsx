@@ -126,17 +126,6 @@ class App extends React.Component {
                     className={this.state.modal ? styles.modalOpen : styles.modalClosed}
                     onRequestClose={this.closeModal}
                     overlayClassName={this.state.modal ? styles.overlayIn : styles.overlayOut}
-                    // style={{
-                    //   overlay: {
-                    //     backgroundColor: 'rgba(0, 0, 0, .5)'
-                    //   },
-                    //   content: {
-                    //     width: '780px',
-                    //     margin: 'auto',
-                    //     borderRadius: '15px',
-                    //     boxShadow: '0px 0px 30px rgba(0, 0, 0, .25)'
-                    //   }
-                    // }}
                     closeTimeoutMS={400}
                     appElement={document.getElementById('app')}
         >
