@@ -17,6 +17,8 @@ const StyledEsc = styled.div`
   border-radius: 50%;
   transition: background-color 0.05s ease;
   font-family: 'Arial';
+  margin-top: 15px;
+  margin-left: 15px;
   margin-bottom: 25px;
 
   &:hover {
