@@ -127,7 +127,7 @@ class App extends React.Component {
                     onRequestClose={this.closeModal}
                     overlayClassName={this.state.modal ? styles.overlayIn : styles.overlayOut}
                     closeTimeoutMS={400}
-                    appElement={document.getElementById('app')}
+                    appElement={document.getElementById('description')}
         >
           <Modal closeModal={this.closeModal}
                  amenities={this.state.amenities}
