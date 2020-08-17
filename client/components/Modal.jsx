@@ -7,6 +7,11 @@ const StyledModal = styled.div`
   color: #222222;
 `
 
+const StyledContainer = styled.div`
+  height: 85vh;
+  overflow-y: auto;
+`
+
 // Escape button style
 const StyledEsc = styled.div`
   display: flex;
@@ -18,8 +23,8 @@ const StyledEsc = styled.div`
   transition: background-color 0.05s ease;
   font-family: 'Arial';
   margin-top: 15px;
-  margin-left: 15px;
   margin-bottom: 25px;
+  margin-left: 15px;
 
   &:hover {
     background-color: #f6f6f6;
@@ -38,6 +43,7 @@ const StyledTitle = styled.div`
 const StyledCategory = styled.div`
   font-size: 17px;
   font-weight: 500;
+  padding-right: 25px;
   padding-left: 25px;
 `
 
@@ -123,70 +129,78 @@ function Modal({ closeModal, amenities }) {
 
       {/* Escape button and Title */}
       <StyledEsc onClick={closeModal}>X</StyledEsc>
-      <StyledTitle>Amenities</StyledTitle>
 
-      <StyledCategory>
+      <StyledContainer>
 
-        {/* Basic */}
-        <StyledCT>{basic.length > 0 ? 'Basic' : null}</StyledCT>
+        <StyledTitle>Amenities</StyledTitle>
 
-        {basic.map(amn => {
-          return (
-            <StyledAmenity key={amn}>
-              {amn}
-              <br />
-              {/* add descriptions if applicable */}
-              {amn === 'Free WiFi' ? wifi : null}
-              {amn === 'Heating' ? heating : null}
-              {amn === '24 Hour Check-In' ? checkIn24Hrs : null}
-            </StyledAmenity>
-          );
-        })}
+        <StyledCategory>
 
-        {/* Facilities */}
-        <StyledCT>{facilities.length > 0 ? 'Facilities' : null}</StyledCT>
+          {/* Basic */}
+          <StyledCT>{basic.length > 0 ? 'Basic' : null}</StyledCT>
 
-        {facilities.map(amn => {
-          return (
-            <StyledAmenity key={amn}>
-              {amn}
-              <br />
-              {/* add descriptions if applicable */}
-              {amn === 'Pool' ? pool : null}
-              {amn === 'Hot Tub' ? hotTub : null}
-            </StyledAmenity>
-          );
-        })}
+          {basic.map(amn => {
+            return (
+              <StyledAmenity key={amn}>
+                {amn}
+                <br />
+                {/* add descriptions if applicable */}
+                {amn === 'Free WiFi' ? wifi : null}
+                {amn === 'Heating' ? heating : null}
+                {amn === '24 Hour Check-In' ? checkIn24Hrs : null}
+              </StyledAmenity>
+            );
+          })}
 
-        {/* Dining */}
-        <StyledCT>{dining.length > 0 ? 'Dining' : null}</StyledCT>
+          {/* Facilities */}
+          <StyledCT>{facilities.length > 0 ? 'Facilities' : null}</StyledCT>
 
-        {dining.map(amn => {
-          return (
-            <StyledAmenity key={amn}>
-              {amn}
-              <br />
-              {/* add descriptions if applicable */}
-              {amn === 'Kitchen' ? kitchen : null}
-            </StyledAmenity>
-          );
-        })}
+          {facilities.map(amn => {
+            return (
+              <StyledAmenity key={amn}>
+                {amn}
+                <br />
+                {/* add descriptions if applicable */}
+                {amn === 'Pool' ? pool : null}
+                {amn === 'Hot Tub' ? hotTub : null}
+              </StyledAmenity>
+            );
+          })}
 
-        {/* Bed and Bath */}
-        <StyledCT>{bedBath.length > 0 ? 'Bed and Bath' : null}</StyledCT>
+          {/* Dining */}
+          <StyledCT>{dining.length > 0 ? 'Dining' : null}</StyledCT>
 
-        {bedBath.map(amn => {
-          return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
-        })}
+          {dining.map(amn => {
+            return (
+              <StyledAmenity key={amn}>
+                {amn}
+                <br />
+                {/* add descriptions if applicable */}
+                {amn === 'Kitchen' ? kitchen : null}
+              </StyledAmenity>
+            );
+          })}
 
-        {/* Not Included */}
-        <StyledCT>{notIncluded.length > 0 ? 'Not Included' : null}</StyledCT>
+          {/* Bed and Bath */}
+          <StyledCT>{bedBath.length > 0 ? 'Bed and Bath' : null}</StyledCT>
 
-        {notIncluded.map(amn => {
-          return <StyledNotIncluded key={amn}>{amn}</StyledNotIncluded>;
-        })}
+          {bedBath.map(amn => {
+            return <StyledAmenity key={amn}>{amn}</StyledAmenity>;
+          })}
 
-      </StyledCategory>
+          {/* Not Included */}
+          <StyledCT>{notIncluded.length > 0 ? 'Not Included' : null}</StyledCT>
+
+          {notIncluded.map(amn => {
+            return <StyledNotIncluded key={amn}>{amn}</StyledNotIncluded>;
+          })}
+
+        </StyledCategory>
+
+      </StyledContainer>
+
+      <div></div>
+
     </StyledModal>
   );
 }
