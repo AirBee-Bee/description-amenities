@@ -22,7 +22,7 @@
   },
   "scripts": {
     "seed": "node database/dataSeed.js",
-    "server-start": "nodemon server/index.js",
+    "start": "nodemon server/index.js",
     "build": "webpack --config webpack.config.js --watch",
     "test": "jest"
   },
