@@ -19,8 +19,8 @@ const StyledHighlightTitle = styled.div`
 `
 
 const StyledIcon = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 30px !important;
+  height: 30px !important;
   padding: 3px 15px 0px 0px;
 `
 
