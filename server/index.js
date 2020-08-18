@@ -6,6 +6,7 @@
 
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const app = express();
 const port = 3333;
 
@@ -13,6 +14,7 @@ const port = 3333;
 const query = require('../database/queryHandlers.js');
 
 app.use(express.json());
+app.use(cors());
 
 // serve index.html regardless of which listing ID is used in URL
 app.get('/listing/:id', (req, res) => {
