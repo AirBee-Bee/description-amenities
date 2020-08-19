@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledMainDiv = styled.div`
   border-bottom: 1px solid #c9c9c9;
-  margin-bottom: 50px;
 `
 
 const StyledTitle = styled.div`
