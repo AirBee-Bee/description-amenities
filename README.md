@@ -1,6 +1,6 @@
-# AirBee&Bee Description + Amenities Module
+# Su Casa Description + Amenities Module
 
-> Repo contains a full-stack module for displaying the description & amenities sections (plus additional amenities modal) for each AirBee&Bee listing.
+> Repo contains a full-stack module for displaying the description & amenities sections (plus additional amenities modal) for each Su Casa vacation rental listing.
 
 ## Related Services
 
