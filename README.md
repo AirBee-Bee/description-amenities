@@ -4,13 +4,13 @@
 
 ## Related Services
 
-  - https://github.com/AirBee-Bee/photo-carousel
-  - https://github.com/AirBee-Bee/checkin-checkout
-  - https://github.com/AirBee-Bee/reviews
+  - https://github.com/Su-Casa/photo-carousel
+  - https://github.com/Su-Casa/checkin-checkout
+  - https://github.com/Su-Casa/reviews
 
 ## Proxy Server for All Services
 
-  - https://github.com/AirBee-Bee/description-amenities-proxy
+  - https://github.com/Su-Casa/description-amenities-proxy
 
 ## Table of Contents
 
